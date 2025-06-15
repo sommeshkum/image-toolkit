@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online image tools - compress, convert, resize, and watermark images in JPEG, PNG, WEBP formats">
+    <meta name="keywords" content="image compressor, image converter, resize image, watermark image, jpeg to png, png to webp">
+    <title>ImageToolKit - Free Online Image Processing Tools</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ImageToolKit",
+      "url": "https://imagetoolkit.com",
+      "description": "Free online tools to compress, convert, resize and watermark images",
+      "applicationCategory": "ImageProcessingApplication",
+      "operatingSystem": "WebBrowser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+<link rel="icon" type="image/png" sizes="32x32" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgu8BeMbiSsjOJr3U2oO6G8-mH7aF7Zcgzl6qH-v66hyphenhyphen3b_BmGCYdt9LojGmjZnOvua7E9B2fCnpwUq9gyzN5v4NnOTaGDoa6nqmOqrh8Rr4w7bWDRUMq1J_JJxAeLDYvlShbOH5tndgHc8W4sEAKzOAxcopFJfxHYDZP2uur6CSRCPNJQ_fphDywoPsh8/s32/favicon-32x32.png">
+
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --dark-gray: #757575;
+            --text-color: #333;
+            --white: #ffffff;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-gray);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        @media (min-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                text-align: left;
+            }
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .logo-container {
+                margin-bottom: 0;
+            }
+        }
+        
+        .logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 1rem;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+        
+        .logo-text p {
+            font-size: 0.875rem;
+            color: var(--dark-gray);
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Ad Banner */
+        .ad-banner {
+            background-color: var(--medium-gray);
+            text-align: center;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border-radius: 4px;
+        }
+        
+        .ad-banner.top {
+            margin-top: 1rem;
+        }
+        
+        .ad-banner.bottom {
+            margin-bottom: 1rem;
+        }
+        
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 1rem 0;
+        }
+        
+        .tool-section {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Upload Area */
+        .upload-area {
+            border: 2px dashed var(--medium-gray);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 1.5rem;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(66, 133, 244, 0.05);
+        }
+        
+        .upload-area.active {
+            border-color: var(--secondary-color);
+            background-color: rgba(52, 168, 83, 0.05);
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .upload-text h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        .upload-text p {
+            color: var(--dark-gray);
+        }
+        
+        /* Tool Selector */
+        .tool-selector {
+            margin-bottom: 1.5rem;
+        }
+        
+        .tool-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tool-option {
+            flex: 1 1 calc(25% - 0.5rem);
+            min-width: 150px;
+        }
+        
+        @media (max-width: 768px) {
+            .tool-option {
+                flex: 1 1 100%;
+            }
+        }
+        
+        .tool-option input {
+            display: none;
+        }
+        
+        .tool-option label {
+            display: block;
+            padding: 0.75rem;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tool-option input:checked + label {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Tool Parameters */
+        .tool-parameters {
+            display: none;
+            padding: 1rem;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        
+        .tool-parameters.active {
+            display: block;
+        }
+        
+        .parameter-group {
+            margin-bottom: 1rem;
+        }
+        
+        .parameter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .parameter-group input, 
+        .parameter-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        /* Preview Section */
+        .preview-section {
+            display: none;
+            margin-top: 1.5rem;
+        }
+        
+        .preview-section.active {
+            display: block;
+        }
+        
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .preview-item {
+            border: 1px solid var(--medium-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: var(--white);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .preview-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .preview-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 75%; /* 4:3 aspect ratio */
+            overflow: hidden;
+        }
+        
+        .preview-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: var(--light-gray);
+            cursor: pointer;
+        }
+        
+        .preview-info {
+            padding: 0.75rem;
+        }
+        
+        .preview-info p {
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .preview-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            font-family: inherit;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3367d6;
+        }
+        
+        .btn-secondary {
+            background-color: var(--medium-gray);
+            color: var(--text-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #d0d0d0;
+        }
+        
+        
+        
+        @media (max-width: 1200px) {
+            .sidebar-ad {
+                display: none;
+            }
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 8px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--dark-gray);
+        }
+        
+        .modal-title {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        /* Image Preview Modal */
+        .image-preview-modal .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            width: auto;
+            padding: 1rem;
+        }
+        
+        .image-preview-modal img {
+            max-width: 100%;
+            max-height: calc(90vh - 2rem);
+            display: block;
+            margin: 0 auto;
+        }
+        
+        /* Home Content */
+        .home-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .footer-column h3 {
+            color: #ecf0f1;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-column a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: #3498db;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+        
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mb-1 {
+            margin-bottom: 1rem;
+        }
+        
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+        
+        .mt-1 {
+            margin-top: 1rem;
+        }
+        
+        .mt-2 {
+            margin-top: 2rem;
+        }
+        
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Collage Style Main Content */
+        .collage-container {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: auto;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .collage-item {
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s;
+        }
+        
+        .collage-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .collage-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .collage-item-large {
+            grid-column: span 6;
+            grid-row: span 2;
+        }
+        
+        .collage-item-medium {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+        
+        .collage-item-small {
+            grid-column: span 3;
+            grid-row: span 1;
+        }
+        
+        .collage-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 768px) {
+            .collage-item-large,
+            .collage-item-medium,
+            .collage-item-small {
+                grid-column: span 12;
+                grid-row: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">ITK</div>
+                    <div class="logo-text">
+                        <h1>ImageToolKit</h1>
+                        <p>Free online image processing tools</p>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
+                        <li><a href="#" class="nav-link" data-section="tools">Tools</a></li>
+                        <li><a href="#" class="nav-link" data-modal="about">About</a></li>
+                        <li><a href="#" class="nav-link" data-modal="contact">Contact</a></li>
+                        <li><a href="#" class="nav-link" data-modal="faq">FAQ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Top Ad Banner -->
+    <div class="container">
+        <div class="ad-banner top">
+            <p>Advertisement</p>
+            <!-- 728x90 banner ad placeholder -->
+            <div style="width: 728px; height: 90px; background-color: #e0e0e0; margin: 0 auto;"></div>
+        </div>
+    </div>
+
+  
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Home Section -->
+        <section id="homeSection" class="tool-section">
+            <h2>Welcome to ImageToolKit</h2>
+            <div class="home-content">
+                <p>Your all-in-one solution for online image processing. Quickly compress, convert, resize, and watermark your images with our easy-to-use tools.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📷</div>
+                        <h3>Image Compression</h3>
+                        <p>Reduce file size without noticeable quality loss. Perfect for web optimization.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3>Format Conversion</h3>
+                        <p>Convert between JPG, PNG, WEBP and more with just a few clicks.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📐</div>
+                        <h3>Smart Resizing</h3>
+                        <p>Resize images to exact dimensions while maintaining aspect ratio.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💧</div>
+                        <h3>Watermarking</h3>
+                        <p>Protect your images with text or logo watermarks in various styles.</p>
+                    </div>
+                </div>                
+                
+                <div class="collage-container">
+                    <div class="collage-item collage-item-large">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Workspace">
+                        <div class="collage-caption">Professional Image Processing</div>
+                    </div>
+                    <div class="collage-item collage-item-medium">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Compression">
+                        <div class="collage-caption">Optimize Your Images</div>
+                    </div>
+                    <div class="collage-item collage-item-medium">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Conversion">
+                        <div class="collage-caption">Multiple Format Support</div>
+                    </div>
+                    <div class="collage-item collage-item-small">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Technology">
+                        <div class="collage-caption">Advanced Algorithms</div>
+                    </div>
+                    <div class="collage-item collage-item-small">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Security">
+                        <div class="collage-caption">Secure Processing</div>
+                    </div>
+                    <div class="collage-item collage-item-small">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Speed">
+                        <div class="collage-caption">Fast Results</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section id="toolsSection" class="tool-section" style="display: none;">
+            <h2>Image Processing Tools</h2>
+            
+            <!-- Upload Area -->
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📁</div>
+                <div class="upload-text">
+                    <h3>Drag & Drop Your Images Here</h3>
+                    <p>or click to browse files (JPEG, PNG, WEBP supported)</p>
+                </div>
+                <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" multiple style="display: none;">
+            </div>
+            
+            <!-- Tool Selector -->
+            <div class="tool-selector">
+                <h3>Select Tool:</h3>
+                <div class="tool-options">
+                    <div class="tool-option">
+                        <input type="radio" name="tool" id="compress" value="compress" checked>
+                        <label for="compress">Compress</label>
+                    </div>
+                    <div class="tool-option">
+                        <input type="radio" name="tool" id="convert" value="convert">
+                        <label for="convert">Convert</label>
+                    </div>
+                    <div class="tool-option">
+                        <input type="radio" name="tool" id="resize" value="resize">
+                        <label for="resize">Resize</label>
+                    </div>
+                    <div class="tool-option">
+                        <input type="radio" name="tool" id="watermark" value="watermark">
+                        <label for="watermark">Watermark</label>
+                    </div>
+                </div>
+                
+                <!-- Tool Parameters -->
+                <div class="tool-parameters" id="compress-params">
+                    <div class="parameter-group">
+                        <label for="compress-quality">Compression Quality:</label>
+                        <select id="compress-quality">
+                            <option value="high">High Quality (Less Compression)</option>
+                            <option value="medium" selected>Medium Quality (Recommended)</option>
+                            <option value="low">Low Quality (Maximum Compression)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="tool-parameters" id="convert-params">
+                    <div class="parameter-group">
+                        <label for="convert-format">Convert To:</label>
+                        <select id="convert-format">
+                            <option value="jpeg">JPEG</option>
+                            <option value="png">PNG</option>
+                            <option value="webp">WEBP</option>
+                            <option value="pdf">PDF (Single Image)</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="tool-parameters" id="resize-params">
+                    <div class="parameter-group">
+                        <label for="resize-width">Width (px):</label>
+                        <input type="number" id="resize-width" placeholder="Leave empty for auto">
+                    </div>
+                    <div class="parameter-group">
+                        <label for="resize-height">Height (px):</label>
+                        <input type="number" id="resize-height" placeholder="Leave empty for auto">
+                    </div>
+                    <div class="parameter-group">
+                        <label for="resize-maintain-ratio">
+                            <input type="checkbox" id="resize-maintain-ratio" checked>
+                            Maintain Aspect Ratio
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="tool-parameters" id="watermark-params">
+                    <div class="parameter-group">
+                        <label>Watermark Type:</label>
+                        <div>
+                            <input type="radio" name="watermark-type" id="watermark-text" value="text" checked>
+                            <label for="watermark-text" style="display: inline;">Text</label>
+                            <input type="radio" name="watermark-type" id="watermark-image" value="image" style="margin-left: 1rem;">
+                            <label for="watermark-image" style="display: inline;">Image</label>
+                        </div>
+                    </div>
+                    
+                    <div id="watermark-text-params">
+                        <div class="parameter-group">
+                            <label for="watermark-text-content">Watermark Text:</label>
+                            <input type="text" id="watermark-text-content" placeholder="Your watermark text">
+                        </div>
+                        <div class="parameter-group">
+                            <label for="watermark-text-color">Text Color:</label>
+                            <input type="color" id="watermark-text-color" value="#000000">
+                        </div>
+                        <div class="parameter-group">
+                            <label for="watermark-text-size">Text Size:</label>
+                            <select id="watermark-text-size">
+                                <option value="small">Small</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="large">Large</option>
+                            </select>
+                        </div>
+                        <div class="parameter-group">
+                            <label for="watermark-text-position">Position:</label>
+                            <select id="watermark-text-position">
+                                <option value="center">Center</option>
+                                <option value="top-left">Top Left</option>
+                                <option value="top-right">Top Right</option>
+                                <option value="bottom-left">Bottom Left</option>
+                                <option value="bottom-right">Bottom Right</option>
+                            </select>
+                        </div>
+                        <div class="parameter-group">
+                            <label for="watermark-text-opacity">Opacity:</label>
+                            <input type="range" id="watermark-text-opacity" min="10" max="100" value="50">
+                            <span id="opacity-value">50%</span>
+                        </div>
+                    </div>
+                    
+                    <div id="watermark-image-params" style="display: none;">
+                        <div class="parameter-group">
+                            <label for="watermark-image-upload">Upload Watermark Image:</label>
+                            <input type="file" id="watermark-image-upload" accept="image/*">
+                        </div>
+                        <div class="parameter-group">
+                            <label for="watermark-image-position">Position:</label>
+                            <select id="watermark-image-position">
+                                <option value="center">Center</option>
+                                <option value="top-left">Top Left</option>
+                                <option value="top-right">Top Right</option>
+                                <option value="bottom-left">Bottom Left</option>
+                                <option value="bottom-right">Bottom Right</option>
+                            </select>
+                        </div>
+                        <div class="parameter-group">
+                            <label for="watermark-image-opacity">Opacity:</label>
+                            <input type="range" id="watermark-image-opacity" min="10" max="100" value="50">
+                            <span id="image-opacity-value">50%</span>
+                        </div>
+                        <div class="parameter-group">
+                            <label for="watermark-image-size">Size:</label>
+                            <select id="watermark-image-size">
+                                <option value="small">Small (10%)</option>
+                                <option value="medium" selected>Medium (25%)</option>
+                                <option value="large">Large (50%)</option>
+                                <option value="original">Original Size</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Process Button -->
+            <div class="text-center mt-2">
+                <button id="processBtn" class="btn btn-primary" style="padding: 0.75rem 2rem;">Process Images</button>
+            </div>
+            
+            <!-- In-content Ad Banner -->
+            <div class="ad-banner mt-2">
+                <p>Advertisement</p>
+                <!-- 300x250 banner ad placeholder -->
+                <div style="width: 300px; height: 250px; background-color: #e0e0e0; margin: 0 auto;"></div>
+            </div>
+            
+            <!-- Results Section -->
+            <div class="preview-section" id="resultsSection">
+                <div class="preview-header">
+                    <h3>Processed Images</h3>
+                    <button id="downloadAllBtn" class="btn btn-secondary">Download All</button>
+                </div>
+                <div class="preview-grid" id="previewGrid"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Ad Banner -->
+    <div class="container">
+        <div class="ad-banner bottom">
+            <p>Advertisement</p>
+            <!-- 728x90 banner ad placeholder -->
+            <div style="width: 728px; height: 90px; background-color: #e0e0e0; margin: 0 auto;"></div>
+        </div>
+    </div>
+
+    <!-- Updated Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#" class="nav-link" data-section="tools">Image Tools</a></li>
+                    <li><a href="#" class="nav-link" data-modal="compress">Image Compression</a></li>
+                    <li><a href="#" class="nav-link" data-modal="convert">Format Conversion</a></li>
+                    <li><a href="#" class="nav-link" data-modal="resize">Image Resizing</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" class="nav-link" data-section="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-modal="about">About Us</a></li>
+                    <li><a href="#" class="nav-link" data-modal="contact">Contact</a></li>
+                    <li><a href="#" class="nav-link" data-modal="faq">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#" class="nav-link" data-modal="terms">Terms of Service</a></li>
+                    <li><a href="#" class="nav-link" data-modal="privacy">Privacy Policy</a></li>
+                    <li><a href="#" class="nav-link" data-modal="cookies">Cookie Policy</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#" class="nav-link" data-modal="blog">Blog</a></li>
+                    <li><a href="#" class="nav-link" data-modal="tutorials">Tutorials</a></li>
+                    <li><a href="#" class="nav-link" data-modal="status">System Status</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2023 ImageToolKit. All rights reserved.</p>
+            <p>Powered by TinyPNG, Cloudinary, and ConvertAPI</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="aboutModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 class="modal-title">About ImageToolKit</h2>
+            <p>ImageToolKit is a free online platform that provides powerful yet easy-to-use image processing tools. Our mission is to make professional-grade image editing accessible to everyone without the need for expensive software or technical expertise.</p>
+            <p>Founded in 2023, ImageToolKit has helped over 100,000 users optimize their images for web, social media, and personal projects. Our tools are designed with simplicity in mind, offering a clean interface that makes image processing straightforward and efficient.</p>
+            <p>All processing happens in your browser or through secure API connections, ensuring your images remain private. We don't store your images permanently on our servers, giving you peace of mind about your data security.</p>
+            <p>Whether you're a blogger, social media manager, web developer, or just someone who needs to edit images occasionally, ImageToolKit has the tools you need to get the job done quickly and effectively.</p>
+            <p>Our team is constantly working to add new features and improve existing tools based on user feedback. If you have suggestions for improvements or new tools you'd like to see, please don't hesitate to contact us.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 class="modal-title">Contact Us</h2>
+            <p>We'd love to hear from you! Whether you have questions about our tools, need technical support, or want to suggest new features, our team is here to help.</p>
+            <p>For general inquiries, please email us at: <strong>support@imagetoolkit.com</strong></p>
+            <p>For business partnerships and advertising opportunities, contact: <strong>business@imagetoolkit.com</strong></p>
+            <p>If you're experiencing technical issues with our tools, please include as much detail as possible about the problem you're encountering, including the browser you're using and any error messages you've received.</p>
+            <p>Our customer support team typically responds within 24-48 hours. For urgent matters, please include "URGENT" in your subject line.</p>
+            <p>You can also connect with us on social media for updates and announcements:</p>
+            <p>Twitter: @ImageToolKit</p>
+            <p>Facebook: /ImageToolKitOfficial</p>
+            <p>We value your feedback and are committed to making ImageToolKit the best online image processing platform available.</p>
+        </div>
+    </div>  
+
+    <div class="modal" id="faqModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 class="modal-title">Frequently Asked Questions</h2>
+            <p><strong>Q: Is ImageToolKit really free to use?</strong><br>
+            A: Yes, all our basic tools are completely free to use. We may introduce premium features in the future, but the core functionality will always remain free.</p>
+            
+            <p><strong>Q: What image formats do you support?</strong><br>
+            A: We support JPEG, PNG, and WEBP formats for both input and output. Our PDF conversion tool can create PDFs from any of these formats.</p>
+            
+            <p><strong>Q: Are my images stored on your servers?</strong><br>
+            A: No, we process images either directly in your browser or through temporary API connections. Your images are never permanently stored on our servers.</p>
+            
+            <p><strong>Q: Is there a file size limit?</strong><br>
+            A: Yes, the current maximum file size is 10MB per image. This ensures fast processing and good performance for all users.</p>
+            
+            <p><strong>Q: Why do I need to sign in after 5 uses?</strong><br>
+            A: The free tier allows 5 image processes per session to prevent abuse of our service. Signing in helps us manage usage fairly for all users.</p>
+            
+            <p><strong>Q: Can I batch process multiple images?</strong><br>
+            A: Yes, you can upload and process multiple images at once, though large batches may take longer to complete.</p>
+            
+            <p><strong>Q: Do you offer an API for developers?</strong><br>
+            A: Not currently, but we're considering this for future development. Please contact us if you're interested in API access.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="termsModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 class="modal-title">Terms of Service</h2>
+            <p>By using ImageToolKit, you agree to these Terms of Service. Please read them carefully before using our services.</p>
+            <p><strong>1. Service Description:</strong> ImageToolKit provides online image processing tools. We reserve the right to modify or discontinue the service at any time without notice.</p>
+            <p><strong>2. User Responsibilities:</strong> You agree not to use the service for any illegal purpose or to upload content that violates copyrights or contains harmful material.</p>
+            <p><strong>3. Intellectual Property:</strong> All content and software associated with the service is owned by ImageToolKit and protected by intellectual property laws.</p>
+            <p><strong>4. Limitation of Liability:</strong> ImageToolKit shall not be liable for any damages resulting from the use or inability to use the service, including data loss or business interruption.</p>
+            <p><strong>5. Privacy:</strong> Your use of the service is subject to our Privacy Policy, which explains how we handle your data.</p>
+            <p><strong>6. Modifications:</strong> We may revise these terms at any time. Continued use of the service after changes constitutes acceptance of the new terms.</p>
+            <p><strong>7. Termination:</strong> We may terminate or suspend access to our service immediately, without prior notice, for any breach of these terms.</p>
+            <p><strong>8. Governing Law:</strong> These terms shall be governed by the laws of the State of Delaware, without regard to its conflict of law provisions.</p>
+            <p>If you do not agree to these terms, please do not use our service. Your continued use of ImageToolKit constitutes acceptance of these terms.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="privacyModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 class="modal-title">Privacy Policy</h2>
+            <p>At ImageToolKit, we take your privacy seriously. This policy explains what information we collect and how we use it.</p>
+            <p><strong>Information Collection:</strong> When you use our service, we may collect non-personal information such as browser type, operating system, and usage patterns. If you create an account, we collect your email address and basic profile information.</p>
+            <p><strong>Image Data:</strong> The images you process are either handled entirely in your browser or temporarily processed through our API partners. We do not permanently store your images on our servers.</p>
+            <p><strong>Cookies:</strong> We use cookies to enhance your experience, remember preferences, and analyze service usage. You can disable cookies in your browser settings.</p>
+            <p><strong>Data Usage:</strong> We use collected information to improve our service, respond to requests, and prevent abuse. We may aggregate anonymous usage data for analytics.</p>
+            <p><strong>Third Parties:</strong> We use trusted third-party services for processing (TinyPNG, Cloudinary, etc.) and analytics. These parties have their own privacy policies governing data use.</p>
+            <p><strong>Data Security:</strong> We implement security measures to protect your information, but no internet transmission is 100% secure. We cannot guarantee absolute security.</p>
+            <p><strong>Children's Privacy:</strong> Our service is not intended for children under 13. We do not knowingly collect personal information from children under 13.</p>
+            <p><strong>Changes:</strong> We may update this policy periodically. Continued use of the service after changes constitutes acceptance of the updated policy.</p>
+            <p>If you have questions about our privacy practices, please contact us at privacy@imagetoolkit.com.</p>
+        </div>
+    </div>
+  
+    <!-- Additional Modals -->
+    <div class="modal" id="tutorialsModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 class="modal-title">ImageToolKit Tutorials</h2>
+            <p>Our comprehensive tutorials help you get the most out of ImageToolKit's features:</p>
+            <p><strong>Getting Started:</strong> Learn how to upload, process, and download images with our step-by-step guide for beginners.</p>
+            <p><strong>Advanced Compression:</strong> Discover techniques for maximizing quality while minimizing file size for web optimization.</p>
+            <p><strong>Batch Processing:</strong> Learn how to efficiently process multiple images at once to save time on large projects.</p>
+            <p><strong>Watermarking Techniques:</strong> Professional tips for creating effective watermarks that protect your images without ruining visibility.</p>
+            <p>New tutorials are added monthly. Subscribe to our newsletter to be notified when we publish new content.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="cookiesModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 class="modal-title">Cookie Policy</h2>
+            <p>This Cookie Policy explains how ImageToolKit uses cookies and similar technologies to recognize you when you visit our website.</p>
+            <p><strong>Essential Cookies:</strong> These are necessary for the website to function and cannot be switched off. They are usually only set in response to actions made by you.</p>
+            <p><strong>Analytics Cookies:</strong> These allow us to count visits and traffic sources so we can measure and improve the performance of our site.</p>
+            <p><strong>Preference Cookies:</strong> These enable the website to provide enhanced functionality and personalization by remembering your choices.</p>
+            <p>You can set your browser to block or alert you about these cookies, but some parts of the site will not then work. We don't use cookies for advertising purposes.</p>
+            <p>For more information about the cookies we use, please contact our Data Protection Officer at privacy@imagetoolkit.com.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="blogModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 class="modal-title">ImageToolKit Blog</h2>
+            <p>Coming soon! Our blog will feature articles on image optimization, web performance, and creative uses of our tools.</p>
+            <p>Subscribe to our newsletter to be notified when we publish new content.</p>
+        </div>
+    </div>
+
+    <div class="modal" id="statusModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 class="modal-title">System Status</h2>
+            <p>All systems operational. No known issues at this time.</p>
+            <p>Last updated: <span id="status-time">Just now</span></p>
+            <p>For real-time updates, follow us on Twitter @ImageToolKitStatus</p>
+        </div>
+    </div>
+
+    <!-- Image Preview Modal -->
+    <div class="modal image-preview-modal" id="imagePreviewModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <img id="fullSizePreview" src="" alt="Full Size Preview">
+        </div>
+    </div>
+
+    <!-- Usage Limit Modal -->
+    <div class="modal" id="limitModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 class="modal-title">Free Usage Limit Reached</h2>
+            <p>You've used all 5 free image processes in this session. To continue using ImageToolKit, please sign in with one of the following options:</p>
+            
+            <div style="margin: 2rem 0;">
+                <button id="googleSignIn" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Sign in with Google
+                </button>
+                <button id="emailSignIn" class="btn btn-secondary" style="width: 100%;">
+                    Sign in with Email
+                </button>
+            </div>
+            
+            <p>By signing in, you'll get unlimited access to all our tools and features. We don't store your images permanently and respect your privacy.</p>
+            <p>Don't want to sign in? You can continue your session in a new browser window.</p>
+        </div>
+    </div>
+
+    <!-- Email Sign In Modal -->
+    <div class="modal" id="emailAuthModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 class="modal-title">Email Sign In</h2>
+            
+            <div class="parameter-group">
+                <label for="auth-email">Email Address:</label>
+                <input type="email" id="auth-email" placeholder="your@email.com">
+            </div>
+            
+            <div class="parameter-group">
+                <label for="auth-password">Password:</label>
+                <input type="password" id="auth-password" placeholder="••••••••">
+            </div>
+            
+            <div style="margin: 1rem 0;">
+                <button id="submitSignIn" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Sign In
+                </button>
+                <p class="text-center">Don't have an account? <a href="#" id="showSignUp">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Email Sign Up Modal -->
+    <div class="modal" id="emailSignUpModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2 class="modal-title">Create Account</h2>
+            
+            <div class="parameter-group">
+                <label for="signup-email">Email Address:</label>
+                <input type="email" id="signup-email" placeholder="your@email.com">
+            </div>
+            
+            <div class="parameter-group">
+                <label for="signup-password">Password (min 8 characters):</label>
+                <input type="password" id="signup-password" placeholder="••••••••">
+            </div>
+            
+            <div class="parameter-group">
+                <label for="signup-confirm">Confirm Password:</label>
+                <input type="password" id="signup-confirm" placeholder="••••••••">
+            </div>
+            
+            <div class="parameter-group">
+                <label>
+                    <input type="checkbox" id="signup-terms">
+                    I agree to the <a href="#" class="nav-link" data-modal="terms">Terms of Service</a> and <a href="#" class="nav-link" data-modal="privacy">Privacy Policy</a>
+                </label>
+            </div>
+            
+            <div style="margin: 1rem 0;">
+                <button id="submitSignUp" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Create Account
+                </button>
+                <p class="text-center">Already have an account? <a href="#" id="showSignIn">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API Configuration
+        const API_CONFIG = {
+            tinify: {
+                key: 'YhMH72q3KjmcxB8VpNL9qQ49wmb5JbXn',
+                endpoint: 'https://api.tinify.com/shrink'
+            },
+            convertapi: {
+                secret: '0sJAbGAncPAQRtidwkgkUEp5PKavAszY',
+                endpoint: 'https://v2.convertapi.com/convert'
+            },
+            cloudinary: {
+                cloudName: 'dcb1wursd',
+                apiKey: '585422222945534',
+                apiSecret: 'rVUtqHASj6ppkCoww58xYcqmK08',
+                uploadPreset: 'unsigned_preset'
+            },
+            imagekit: {
+                publicKey: 'public_/xOFUylQZm6pNNTwednwabDn0M8=',
+                urlEndpoint: 'https://ik.imagekit.io/kszceq8wp'
+            }
+        };
+
+        // Global Variables
+        let uploadedFiles = [];
+        let processedFiles = [];
+        let usageCount = 0;
+        const MAX_FREE_USES = 5;
+
+        // DOM Elements
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const processBtn = document.getElementById('processBtn');
+        const resultsSection = document.getElementById('resultsSection');
+        const previewGrid = document.getElementById('previewGrid');
+        const downloadAllBtn = document.getElementById('downloadAllBtn');
+        const toolRadios = document.querySelectorAll('input[name="tool"]');
+        const watermarkTypeRadios = document.querySelectorAll('input[name="watermark-type"]');
+        const watermarkTextParams = document.getElementById('watermark-text-params');
+        const watermarkImageParams = document.getElementById('watermark-image-params');
+        const opacityValue = document.getElementById('opacity-value');
+        const imageOpacityValue = document.getElementById('image-opacity-value');
+        const watermarkTextOpacity = document.getElementById('watermark-text-opacity');
+        const watermarkImageOpacity = document.getElementById('watermark-image-opacity');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sectionLinks = document.querySelectorAll('[data-section]');
+        const modals = document.querySelectorAll('.modal');
+        const modalCloseBtns = document.querySelectorAll('.modal-close');
+        const limitModal = document.getElementById('limitModal');
+        const googleSignIn = document.getElementById('googleSignIn');
+        const emailSignIn = document.getElementById('emailSignIn');
+        const emailAuthModal = document.getElementById('emailAuthModal');
+        const emailSignUpModal = document.getElementById('emailSignUpModal');
+        const showSignUp = document.getElementById('showSignUp');
+        const showSignIn = document.getElementById('showSignIn');
+        const submitSignIn = document.getElementById('submitSignIn');
+        const submitSignUp = document.getElementById('submitSignUp');
+        const homeSection = document.getElementById('homeSection');
+        const toolsSection = document.getElementById('toolsSection');
+        const imagePreviewModal = document.getElementById('imagePreviewModal');
+        const fullSizePreview = document.getElementById('fullSizePreview');
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', initApp);
+        uploadArea.addEventListener('click', () => fileInput.click());
+        uploadArea.addEventListener('dragover', handleDragOver);
+        uploadArea.addEventListener('dragleave', handleDragLeave);
+        uploadArea.addEventListener('drop', handleDrop);
+        fileInput.addEventListener('change', handleFileSelect);
+        processBtn.addEventListener('click', processImages);
+        downloadAllBtn.addEventListener('click', downloadAllFiles);
+        toolRadios.forEach(radio => radio.addEventListener('change', updateToolParameters));
+        watermarkTypeRadios.forEach(radio => radio.addEventListener('change', toggleWatermarkType));
+        watermarkTextOpacity.addEventListener('input', updateOpacityText);
+        watermarkImageOpacity.addEventListener('input', updateImageOpacityText);
+        navLinks.forEach(link => link.addEventListener('click', handleNavLinkClick));
+        sectionLinks.forEach(link => link.addEventListener('click', handleSectionLink));
+        modalCloseBtns.forEach(btn => btn.addEventListener('click', closeAllModals));
+        googleSignIn.addEventListener('click', signInWithGoogle);
+        emailSignIn.addEventListener('click', showEmailAuthModal);
+        showSignUp.addEventListener('click', showSignUpModal);
+        showSignIn.addEventListener('click', showSignInModal);
+        submitSignIn.addEventListener('click', handleEmailSignIn);
+        submitSignUp.addEventListener('click', handleEmailSignUp);
+
+        // Initialize Application
+        function initApp() {
+            updateToolParameters();
+            updateOpacityText();
+            updateImageOpacityText();
+            
+            // Check for existing usage count in localStorage
+            const savedCount = localStorage.getItem('imageToolkitUsageCount');
+            if (savedCount) {
+                usageCount = parseInt(savedCount);
+            }
+            
+            // Set current date for status modal
+            document.getElementById('status-time').textContent = new Date().toLocaleString();
+        }
+
+        // Section Navigation
+        function handleSectionLink(e) {
+            e.preventDefault();
+            const section = e.target.getAttribute('data-section');
+            
+            // Update active nav link
+            sectionLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            e.target.classList.add('active');
+            
+            // Show the selected section
+            if (section === 'home') {
+                homeSection.style.display = 'block';
+                toolsSection.style.display = 'none';
+            } else if (section === 'tools') {
+                homeSection.style.display = 'none';
+                toolsSection.style.display = 'block';
+            }
+        }
+
+        // File Handling
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadArea.classList.add('active');
+        }
+
+        function handleDragLeave(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadArea.classList.remove('active');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadArea.classList.remove('active');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFiles(files);
+            }
+        }
+
+        function handleFileSelect(e) {
+            const files = e.target.files;
+            if (files.length > 0) {
+                handleFiles(files);
+            }
+        }
+
+        function handleFiles(files) {
+            const validFiles = Array.from(files).filter(file => 
+                file.type.match('image/jpeg') || 
+                file.type.match('image/png') || 
+                file.type.match('image/webp')
+            );
+            
+            if (validFiles.length === 0) {
+                alert('Please upload only JPEG, PNG, or WEBP images.');
+                return;
+            }
+            
+            uploadedFiles = [...uploadedFiles, ...validFiles];
+            updateFilePreviews();
+        }
+
+        function updateFilePreviews() {
+            // Clear existing previews (we'll rebuild them all)
+            previewGrid.innerHTML = '';
+            
+            if (uploadedFiles.length === 0) {
+                resultsSection.classList.remove('active');
+                return;
+            }
+            
+            resultsSection.classList.add('active');
+            
+            uploadedFiles.forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const previewItem = document.createElement('div');
+                    previewItem.className = 'preview-item';
+                    previewItem.dataset.index = index;
+                    
+                    previewItem.innerHTML = `
+                        <div class="preview-image-container">
+                            <img src="${e.target.result}" class="preview-image" alt="Preview" data-index="${index}">
+                        </div>
+                        <div class="preview-info">
+                            <p><strong>${file.name}</strong></p>
+                            <p>${(file.size / 1024).toFixed(2)} KB</p>
+                            <p>${file.type.replace('image/', '').toUpperCase()}</p>
+                            <div class="preview-actions">
+                                <button class="btn btn-secondary remove-btn" data-index="${index}">Remove</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    previewGrid.appendChild(previewItem);
+                    
+                    // Add event listeners
+                    const removeBtn = previewItem.querySelector('.remove-btn');
+                    removeBtn.addEventListener('click', () => removeFile(index));
+                    
+                    const previewImage = previewItem.querySelector('.preview-image');
+                    previewImage.addEventListener('click', () => showFullSizePreview(e.target.result));
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function showFullSizePreview(imageSrc) {
+            fullSizePreview.src = imageSrc;
+            imagePreviewModal.classList.add('active');
+        }
+
+        function removeFile(index) {
+            uploadedFiles.splice(index, 1);
+            updateFilePreviews();
+        }
+
+        // Tool Selection
+        function updateToolParameters() {
+            // Hide all parameter sections
+            document.querySelectorAll('.tool-parameters').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected tool's parameters
+            const selectedTool = document.querySelector('input[name="tool"]:checked').value;
+            document.getElementById(`${selectedTool}-params`).classList.add('active');
+        }
+
+        function toggleWatermarkType() {
+            const selectedType = document.querySelector('input[name="watermark-type"]:checked').value;
+            
+            if (selectedType === 'text') {
+                watermarkTextParams.style.display = 'block';
+                watermarkImageParams.style.display = 'none';
+            } else {
+                watermarkTextParams.style.display = 'none';
+                watermarkImageParams.style.display = 'block';
+            }
+        }
+
+        function updateOpacityText() {
+            opacityValue.textContent = `${watermarkTextOpacity.value}%`;
+        }
+
+        function updateImageOpacityText() {
+            imageOpacityValue.textContent = `${watermarkImageOpacity.value}%`;
+        }
+
+        // Image Processing
+        function processImages() {
+            if (uploadedFiles.length === 0) {
+                alert('Please upload at least one image to process.');
+                return;
+            }
+            
+            // Check usage limit
+            if (usageCount >= MAX_FREE_USES) {
+                showModal('limitModal');
+                return;
+            }
+            
+            // Get selected tool
+            const selectedTool = document.querySelector('input[name="tool"]:checked').value;
+            
+            // Show loading state
+            processBtn.disabled = true;
+            processBtn.innerHTML = '<span class="spinner"></span> Processing...';
+            
+            // Process each file
+            const processingPromises = uploadedFiles.map(file => {
+                switch (selectedTool) {
+                    case 'compress':
+                        return compressImage(file);
+                    case 'convert':
+                        return convertImage(file);
+                    case 'resize':
+                        return resizeImage(file);
+                    case 'watermark':
+                        return watermarkImage(file);
+                    default:
+                        return Promise.resolve(file);
+                }
+            });
+            
+            // Wait for all processing to complete
+            Promise.all(processingPromises)
+                .then(results => {
+                    processedFiles = results;
+                    displayProcessedResults();
+                    usageCount++;
+                    localStorage.setItem('imageToolkitUsageCount', usageCount);
+                })
+                .catch(error => {
+                    console.error('Processing error:', error);
+                    alert('An error occurred during processing. Please try again.');
+                })
+                .finally(() => {
+                    processBtn.disabled = false;
+                    processBtn.textContent = 'Process Images';
+                });
+        }
+
+        function compressImage(file) {
+            return new Promise((resolve, reject) => {
+                const quality = document.getElementById('compress-quality').value;
+                let compressionLevel;
+                
+                switch (quality) {
+                    case 'high': compressionLevel = 0.7; break;
+                    case 'medium': compressionLevel = 0.5; break;
+                    case 'low': compressionLevel = 0.3; break;
+                    default: compressionLevel = 0.5;
+                }
+                
+                simulateCompression(file, compressionLevel)
+                    .then(compressedFile => resolve(compressedFile))
+                    .catch(error => reject(error));
+            });
+        }
+
+        function simulateCompression(file, quality) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0);
+                        
+                        canvas.toBlob(blob => {
+                            const compressedFile = new File([blob], file.name, {
+                                type: file.type,
+                                lastModified: Date.now()
+                            });
+                            resolve(compressedFile);
+                        }, file.type, quality);
+                    };
+                    img.onerror = reject;
+                    img.src = e.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function convertImage(file) {
+            return new Promise((resolve, reject) => {
+                const format = document.getElementById('convert-format').value;
+                
+                if (format === 'pdf') {
+                    const newFile = new File([file], `${file.name.split('.')[0]}.pdf`, {
+                        type: 'application/pdf',
+                        lastModified: Date.now()
+                    });
+                    resolve(newFile);
+                } else {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = new Image();
+                        img.onload = function() {
+                            const canvas = document.createElement('canvas');
+                            canvas.width = img.width;
+                            canvas.height = img.height;
+                            const ctx = canvas.getContext('2d');
+                            ctx.drawImage(img, 0, 0);
+                            
+                            let mimeType;
+                            switch (format) {
+                                case 'jpeg': mimeType = 'image/jpeg'; break;
+                                case 'png': mimeType = 'image/png'; break;
+                                case 'webp': mimeType = 'image/webp'; break;
+                                default: mimeType = 'image/jpeg';
+                            }
+                            
+                            canvas.toBlob(blob => {
+                                const convertedFile = new File([blob], `${file.name.split('.')[0]}.${format}`, {
+                                    type: mimeType,
+                                    lastModified: Date.now()
+                                });
+                                resolve(convertedFile);
+                            }, mimeType, 0.8);
+                        };
+                        img.onerror = reject;
+                        img.src = e.target.result;
+                    };
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        function resizeImage(file) {
+            return new Promise((resolve, reject) => {
+                const width = document.getElementById('resize-width').value;
+                const height = document.getElementById('resize-height').value;
+                const maintainRatio = document.getElementById('resize-maintain-ratio').checked;
+                
+                if (!width && !height) {
+                    alert('Please specify at least width or height for resizing.');
+                    reject('No dimensions specified');
+                    return;
+                }
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        let newWidth, newHeight;
+                        
+                        if (width && height) {
+                            newWidth = parseInt(width);
+                            newHeight = parseInt(height);
+                        } else if (width && maintainRatio) {
+                            newWidth = parseInt(width);
+                            newHeight = (img.height * newWidth) / img.width;
+                        } else if (height && maintainRatio) {
+                            newHeight = parseInt(height);
+                            newWidth = (img.width * newHeight) / img.height;
+                        } else {
+                            newWidth = width ? parseInt(width) : img.width;
+                            newHeight = height ? parseInt(height) : img.height;
+                        }
+                        
+                        const canvas = document.createElement('canvas');
+                        canvas.width = newWidth;
+                        canvas.height = newHeight;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, newWidth, newHeight);
+                        
+                        canvas.toBlob(blob => {
+                            const resizedFile = new File([blob], file.name, {
+                                type: file.type,
+                                lastModified: Date.now()
+                            });
+                            resolve(resizedFile);
+                        }, file.type, 0.8);
+                    };
+                    img.onerror = reject;
+                    img.src = e.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function watermarkImage(file) {
+            return new Promise((resolve, reject) => {
+                const watermarkType = document.querySelector('input[name="watermark-type"]:checked').value;
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext('2d');
+                        
+                        ctx.drawImage(img, 0, 0);
+                        
+                        if (watermarkType === 'text') {
+                            applyTextWatermark(ctx, img.width, img.height);
+                        } else {
+                            applyImageWatermark(ctx, img.width, img.height);
+                        }
+                        
+                        canvas.toBlob(blob => {
+                            const watermarkedFile = new File([blob], file.name, {
+                                type: file.type,
+                                lastModified: Date.now()
+                            });
+                            resolve(watermarkedFile);
+                        }, file.type, 0.8);
+                    };
+                    img.onerror = reject;
+                    img.src = e.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function applyTextWatermark(ctx, imgWidth, imgHeight) {
+            const text = document.getElementById('watermark-text-content').value || 'Watermark';
+            const color = document.getElementById('watermark-text-color').value;
+            const sizeSelect = document.getElementById('watermark-text-size').value;
+            const position = document.getElementById('watermark-text-position').value;
+            const opacity = parseInt(document.getElementById('watermark-text-opacity').value) / 100;
+            
+            let fontSize;
+            switch (sizeSelect) {
+                case 'small': fontSize = Math.min(imgWidth, imgHeight) * 0.05; break;
+                case 'medium': fontSize = Math.min(imgWidth, imgHeight) * 0.1; break;
+                case 'large': fontSize = Math.min(imgWidth, imgHeight) * 0.15; break;
+                default: fontSize = Math.min(imgWidth, imgHeight) * 0.1;
+            }
+            
+            ctx.font = `bold ${fontSize}px Arial`;
+            ctx.fillStyle = color;
+            ctx.globalAlpha = opacity;
+            
+            let x, y;
+            switch (position) {
+                case 'center':
+                    x = imgWidth / 2;
+                    y = imgHeight / 2;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    break;
+                case 'top-left':
+                    x = imgWidth * 0.1;
+                    y = imgHeight * 0.1;
+                    ctx.textAlign = 'left';
+                    ctx.textBaseline = 'top';
+                    break;
+                case 'top-right':
+                    x = imgWidth * 0.9;
+                    y = imgHeight * 0.1;
+                    ctx.textAlign = 'right';
+                    ctx.textBaseline = 'top';
+                    break;
+                case 'bottom-left':
+                    x = imgWidth * 0.1;
+                    y = imgHeight * 0.9;
+                    ctx.textAlign = 'left';
+                    ctx.textBaseline = 'bottom';
+                    break;
+                case 'bottom-right':
+                    x = imgWidth * 0.9;
+                    y = imgHeight * 0.9;
+                    ctx.textAlign = 'right';
+                    ctx.textBaseline = 'bottom';
+                    break;
+                default:
+                    x = imgWidth / 2;
+                    y = imgHeight / 2;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+            }
+            
+            ctx.fillText(text, x, y);
+            ctx.globalAlpha = 1.0;
+        }
+
+        function applyImageWatermark(ctx, imgWidth, imgHeight) {
+            const position = document.getElementById('watermark-image-position').value;
+            const opacity = parseInt(document.getElementById('watermark-image-opacity').value) / 100;
+            const sizeSelect = document.getElementById('watermark-image-size').value;
+            
+            let size;
+            switch (sizeSelect) {
+                case 'small': size = 0.1; break;
+                case 'medium': size = 0.25; break;
+                case 'large': size = 0.5; break;
+                case 'original': size = 1.0; break;
+                default: size = 0.25;
+            }
+            
+            const watermarkWidth = imgWidth * size;
+            const watermarkHeight = imgHeight * size;
+            
+            let x, y;
+            switch (position) {
+                case 'center':
+                    x = (imgWidth - watermarkWidth) / 2;
+                    y = (imgHeight - watermarkHeight) / 2;
+                    break;
+                case 'top-left':
+                    x = imgWidth * 0.05;
+                    y = imgHeight * 0.05;
+                    break;
+                case 'top-right':
+                    x = imgWidth * 0.95 - watermarkWidth;
+                    y = imgHeight * 0.05;
+                    break;
+                case 'bottom-left':
+                    x = imgWidth * 0.05;
+                    y = imgHeight * 0.95 - watermarkHeight;
+                    break;
+                case 'bottom-right':
+                    x = imgWidth * 0.95 - watermarkWidth;
+                    y = imgHeight * 0.95 - watermarkHeight;
+                    break;
+                default:
+                    x = (imgWidth - watermarkWidth) / 2;
+                    y = (imgHeight - watermarkHeight) / 2;
+            }
+            
+            ctx.fillStyle = 'rgba(200, 200, 200, ' + opacity + ')';
+            ctx.fillRect(x, y, watermarkWidth, watermarkHeight);
+            
+            ctx.fillStyle = 'rgba(0, 0, 0, ' + opacity + ')';
+            ctx.font = 'bold ' + (watermarkHeight * 0.1) + 'px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('Watermark', x + watermarkWidth / 2, y + watermarkHeight / 2);
+        }
+
+        function displayProcessedResults() {
+            previewGrid.innerHTML = '';
+            
+            processedFiles.forEach((file, index) => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const previewItem = document.createElement('div');
+                    previewItem.className = 'preview-item';
+                    
+                    const originalSize = uploadedFiles[index].size;
+                    const processedSize = file.size;
+                    const reduction = ((originalSize - processedSize) / originalSize * 100).toFixed(2);
+                    
+                    previewItem.innerHTML = `
+                        <div class="preview-image-container">
+                            <img src="${e.target.result}" class="preview-image" alt="Processed Preview" data-index="${index}">
+                        </div>
+                        <div class="preview-info">
+                            <p><strong>${file.name}</strong></p>
+                            <p>Original: ${(originalSize / 1024).toFixed(2)} KB</p>
+                            <p>Processed: ${(processedSize / 1024).toFixed(2)} KB</p>
+                            <p>Reduction: ${reduction}%</p>
+                            <div class="preview-actions">
+                                <button class="btn btn-primary download-btn" data-index="${index}">Download</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    previewGrid.appendChild(previewItem);
+                    
+                    const downloadBtn = previewItem.querySelector('.download-btn');
+                    downloadBtn.addEventListener('click', () => downloadFile(index));
+                    
+                    const previewImage = previewItem.querySelector('.preview-image');
+                    previewImage.addEventListener('click', () => showFullSizePreview(e.target.result));
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function downloadFile(index) {
+            const file = processedFiles[index];
+            const url = URL.createObjectURL(file);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = file.name;
+            document.body.appendChild(a);
+            a.click();
+            
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+        }
+
+        function downloadAllFiles() {
+            if (processedFiles.length === 0) {
+                alert('No processed files to download.');
+                return;
+            }
+            
+            if (processedFiles.length === 1) {
+                downloadFile(0);
+            } else {
+                alert('In a real implementation, this would download a ZIP file with all processed images. For this demo, please download files individually.');
+            }
+        }
+
+        // Modal Handling
+        function handleNavLinkClick(e) {
+            e.preventDefault();
+            const modalId = e.target.getAttribute('data-modal') + 'Modal';
+            showModal(modalId);
+        }
+
+        function showModal(modalId) {
+            closeAllModals();
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeAllModals() {
+            modals.forEach(modal => modal.classList.remove('active'));
+        }
+
+        // Authentication (simulated)
+        function signInWithGoogle() {
+            alert('In a real implementation, this would sign in with Google using Firebase or similar service.');
+            usageCount = 0;
+            localStorage.setItem('imageToolkitUsageCount', usageCount);
+            closeAllModals();
+        }
+
+        function showEmailAuthModal(e) {
+            e.preventDefault();
+            closeAllModals();
+            emailAuthModal.classList.add('active');
+        }
+
+        function showSignUpModal(e) {
+            e.preventDefault();
+            closeAllModals();
+            emailSignUpModal.classList.add('active');
+        }
+
+        function showSignInModal(e) {
+            e.preventDefault();
+            closeAllModals();
+            emailAuthModal.classList.add('active');
+        }
+
+        function handleEmailSignIn() {
+            const email = document.getElementById('auth-email').value;
+            const password = document.getElementById('auth-password').value;
+            
+            if (!email || !password) {
+                alert('Please enter both email and password.');
+                return;
+            }
+            
+            alert('In a real implementation, this would validate credentials with your backend.');
+            usageCount = 0;
+            localStorage.setItem('imageToolkitUsageCount', usageCount);
+            closeAllModals();
+        }
+
+        function handleEmailSignUp() {
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirm = document.getElementById('signup-confirm').value;
+            const agreed = document.getElementById('signup-terms').checked;
+            
+            if (!email || !password || !confirm) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            
+            if (password !== confirm) {
+                alert('Passwords do not match.');
+                return;
+            }
+            
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters.');
+                return;
+            }
+            
+            if (!agreed) {
+                alert('You must agree to the Terms and Privacy Policy.');
+                return;
+            }
+            
+            alert('In a real implementation, this would create an account and sign you in.');
+            usageCount = 0;
+            localStorage.setItem('imageToolkitUsageCount', usageCount);
+            closeAllModals();
+        }
+
+        // Close modals when clicking outside content
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                closeAllModals();
+            }
+        });
+    </script>
+</body>
+</html>
